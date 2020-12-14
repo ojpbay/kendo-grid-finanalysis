@@ -18,11 +18,11 @@ export const sampleQuotes = [
     lineOfBusiness: "Auto Liability",
     expiringPremium: 23361,
     selectedQuote: {
-      marketName: 'AIG',
+      marketName: "AIG",
       value: 33900
     },
     difference: {
-      value:  10549,
+      value: 10549,
       percentageValue: 0.4511
     },
     quotes: [
@@ -90,6 +90,14 @@ export const sampleQuotes = [
   {
     lineOfBusiness: "General Liability",
     expiringPremium: 400000,
+    selectedQuote: {
+      marketName: "American Contractors",
+      value: 504600
+    },
+    difference: {
+      value: 104600,
+      percentageValue: 0.2615
+    },
     quotes: [
       {
         id: "4",
