@@ -1,6 +1,7 @@
 export const sampleQuotes = [
   {
-    layerName: "Whole Placement",
+    lineOfBusiness: "Workers Compensation",
+    expiringPremium: 207494,
     quotes: [
       {
         id: "1",
@@ -14,8 +15,16 @@ export const sampleQuotes = [
     riskStrategy: "My first strategy"
   },
   {
-    layerName: "Primary - $500k Self-insured Retention",
-    expiringPremium: 234234,
+    lineOfBusiness: "Auto Liability",
+    expiringPremium: 23361,
+    selectedQuote: {
+      marketName: 'AIG',
+      value: 33900
+    },
+    difference: {
+      value:  10549,
+      percentageValue: 0.4511
+    },
     quotes: [
       {
         id: "2",
@@ -79,7 +88,8 @@ export const sampleQuotes = [
     riskStrategy: "another strategy"
   },
   {
-    layerName: "Primary - $100k Self-insured Retention",
+    lineOfBusiness: "General Liability",
+    expiringPremium: 400000,
     quotes: [
       {
         id: "4",

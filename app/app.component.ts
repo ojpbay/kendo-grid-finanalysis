@@ -10,7 +10,7 @@ export class AppComponent {
   public gridData: any[] = sampleQuotes;
 
   public strategies: any[] = [
-    { columnName: "layerName", title: "Layer" },
+    { columnName: "lineOfBusiness", title: "Quote Summary" },
     {
       columnName: "expiringStrategy",
       title: "Expiring"

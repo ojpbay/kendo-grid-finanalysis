@@ -8,7 +8,7 @@
 
 	<mat-toolbar-row>
 		<ng-container *ngFor="let strategy of strategies">
-			<div *ngIf="strategy.columnName.toLowerCase() !== 'layername' && strategy.columnName.toLowerCase() !== 'expiringstrategy'"
+			<div *ngIf="strategy.columnName !== 'lineOfBusiness' && strategy.columnName !== 'expiringStrategy'"
 				class="col-xs-6 col-md-4 example-col">
 
 				<mat-checkbox id="{{strategy.columnName}}" [disabled]="isDisabled(strategy.columnName)"
@@ -22,7 +22,7 @@
 </mat-toolbar>
 
 <kendo-grid [data]="gridData" [reorderable]="true" (cellClick)="cellClickHandler($event)">
-	<kendo-grid-column field="layerName" title="Layer" width="200" [locked]="true">
+	<kendo-grid-column field="lineOfBusiness" title="Quote Summary" width="200" [locked]="true">
 
 	</kendo-grid-column>
 
@@ -34,7 +34,7 @@
 	</kendo-grid-column>
 
 	<ng-container *ngFor="let strat of strategies">
-		<ng-container *ngIf="strat.columnName !== 'layerName' && strat.columnName !== 'expiringStrategy'">
+		<ng-container *ngIf="strat.columnName !== 'lineOfBusiness' && strat.columnName !== 'expiringStrategy'">
 
 			<kendo-grid-column-group [title]="strat.title" [locked]="false" *ngIf="!isHidden(strat.columnName)"
 				width="350">
@@ -60,19 +60,20 @@
 
 				</ng-template>
 
-				<kendo-grid-column title="Select Quote" [locked]="false" width="150">
+				<kendo-grid-column title="Quote" [locked]="false" width="150">
 
+					<ng-template kendoGridCellTemplate let-dataItem="dataItem">
+						<div class="placeholder">
+							{{ (dataItem?.selectedQuote?.value | currency) || 'Select Quote' }}
+						</div>
+					</ng-template>
 					<ng-template kendoGridEditTemplate let-dataItem="dataItem" let-column="column"
 						let-formGroup="formGroup">
 
-						<ng-template kendoGridCellTemplate let-dataItem="dataItem">
-							{{dataItem.expiringPremium}}
-						</ng-template>
-
-						<mat-select>
-							<mat-option value="option1">Option 1</mat-option>
-							<mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
-							<mat-option value="option3">Option 3</mat-option>
+						<mat-select [(value)]="selectedQuote">
+							<mat-option value="654654">Aegis</mat-option>
+							<mat-option value="45000">AIG</mat-option>
+							<mat-option value="215000">Chubb</mat-option>
 						</mat-select>
 
 
@@ -80,13 +81,17 @@
 
 				</kendo-grid-column>
 				<kendo-grid-column title="Premium" [locked]="false" width="150">
-					<ng-template kendoGridFooterTemplate let-column let-columnIndex="columnIndex">
-
+					<ng-template kendoGridCellTemplate let-dataItem="dataItem">
+						{{dataItem?.quotes[0]?.grossPremium?.value | currency}}
 					</ng-template>
 				</kendo-grid-column>
 				<kendo-grid-column title="Difference" [locked]="false" width="150">
-					<ng-template kendoGridFooterTemplate let-column let-columnIndex="columnIndex">
+					<ng-template kendoGridCellTemplate let-dataItem="dataItem">
 
+						<ng-container *ngIf="dataItem.difference">
+							{{dataItem.difference.value | currency}}
+							<span>({{dataItem.difference.percentageValue | percent : '1.2-2'}})</span>
+						</ng-container>
 					</ng-template>
 				</kendo-grid-column>
 			</kendo-grid-column-group>
