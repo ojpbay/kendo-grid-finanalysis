@@ -15,6 +15,7 @@ export const sampleQuotes = [
   },
   {
     layerName: "Primary - $500k Self-insured Retention",
+    expiringPremium: 234234,
     quotes: [
       {
         id: "2",

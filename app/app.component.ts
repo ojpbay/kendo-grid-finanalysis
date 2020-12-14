@@ -68,6 +68,13 @@ export class AppComponent {
     this.strategies.push(newStrat);
   }
 
+  public deleteStrategy(strategy: any): void {
+    const index = this.strategies.indexOf(strategy);
+    if (index > -1) {
+      this.strategies.splice(index, 1);
+    }
+  }  
+
   public addStrategy(): void {
     const strat = this.copyStrategyInternal(null);
     this.strategies.push(strat);
@@ -76,7 +83,7 @@ export class AppComponent {
   private copyStrategyInternal(strategy: any): any {
     const length = this.strategies.length - 1;
     const colName = strategy?.columName ? `${strategy.columnName}(${length})` : `newStrategy${length}`;
-    const title = strategy?.title ? `${strategy.title}(${length})` : `newStrategy${length}`;
+    const title = strategy?.title ? `${strategy.title} - Copy` : `New Strategy (${length})`;
     
     const strat = {
       columnName: colName,
