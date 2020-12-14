@@ -1,8 +1,8 @@
 <div class="example-config">
 	<div class="row">
 		<div class="col-12 example-col">
-			<button (click)="restoreColumns()" class="k-button">Restore hidden columns</button>
-			<button (click)="addStrategy()" class="k-button">Add New Strategy </button>
+			<button mat-button (click)="restoreColumns()" class="k-button">Restore hidden columns</button>
+			<button mat-button color="primary" (click)="addStrategy()" class="k-button">Add New Strategy </button>
 		</div>
 	</div>
 	<div class="row">
@@ -10,12 +10,9 @@
 			<div *ngIf="strategy.columnName.toLowerCase() !== 'layername' && strategy.columnName.toLowerCase() !== 'expiringstrategy'"
 				class="col-xs-6 col-md-4 example-col">
 
-				<input type="checkbox"
-                id="{{strategy.columnName}}"
-                class="k-checkbox"
-                [disabled]="isDisabled(strategy.columnName)"
-                [checked]="!isHidden(strategy.columnName)"
-                (change)="hideColumn(strategy.columnName)" />
+				<mat-checkbox id="{{strategy.columnName}}" [disabled]="isDisabled(strategy.columnName)"
+					[checked]="!isHidden(strategy.columnName)" (change)="hideColumn(strategy.columnName)">
+				</mat-checkbox>
 				<label class="k-checkbox-label" for="{{strategy.columnName}}">{{strategy.title}}</label>
 
 			</div>
@@ -66,15 +63,6 @@
 			</kendo-grid-column-group>
 
 		</ng-container>
-
-
-
-
 	</ng-container>
-
-
-
-
-
 
 </kendo-grid>
