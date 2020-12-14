@@ -41,17 +41,22 @@
 
 				<!-- header template -->
 				<ng-template kendoGridHeaderTemplate let-column let-columnIndex="columnIndex">
-					<span>
-						{{column.title}}
-					</span>
-					<span class="example-spacer"></span>
-					<button mat-mini-fab color="primary" matTooltip="Copy Strategy" (click)="copyStrategy(strat)">
-            <mat-icon>content_copy</mat-icon>
-          </button>
+					<mat-toolbar>
 
-          <button mat-mini-fab matTooltip="Delete Strategy" (click)="deleteStrategy(strat)">
+
+						<mat-form-field class="example-full-width">
+							<input matInput placeholder="Enter strategy name" [value]="column.title" class="full-width">
+            </mat-form-field>
+
+							<span class="example-spacer"></span>
+							<button mat-icon-button matTooltip="Copy Strategy" (click)="copyStrategy(strat)">
+              <mat-icon>content_copy</mat-icon>
+            </button>
+							<button mat-icon-button class="example-icon" matTooltip="Delete Strategy" (click)="deleteStrategy(strat)">
             <mat-icon>delete</mat-icon>
           </button>
+					</mat-toolbar>
+
 
 				</ng-template>
 
