@@ -7,7 +7,8 @@
 	</div>
 	<div class="row">
 		<ng-container *ngFor="let strategy of strategies">
-			<div *ngIf="strategy.columnName.toLowerCase() !== 'layername'" class="col-xs-6 col-md-4 example-col">
+			<div *ngIf="strategy.columnName.toLowerCase() !== 'layername' && strategy.columnName.toLowerCase() !== 'expiringstrategy'"
+				class="col-xs-6 col-md-4 example-col">
 
 				<input type="checkbox"
                 id="{{strategy.columnName}}"
@@ -27,7 +28,8 @@
 
 	</kendo-grid-column>
 
-	<kendo-grid-column title="Expiring" width="150" [locked]="true" *ngIf="!isHidden('expiringStrategy')">
+	<!-- nned to have at least one locked column -->
+	<kendo-grid-column title="Expiring" width="150" [locked]="false">
 
 	</kendo-grid-column>
 

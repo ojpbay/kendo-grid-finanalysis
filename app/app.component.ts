@@ -50,7 +50,6 @@ export class AppComponent {
   }
 
   public hideColumn(columnName: string): void {
-    debugger;
     const hiddenColumns = this.hiddenColumns;
 
     if (!this.isHidden(columnName)) {
