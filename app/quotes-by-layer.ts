@@ -2,6 +2,10 @@ export const sampleQuotes = [
   {
     lineOfBusiness: "Workers Compensation",
     expiringPremium: 207494,
+    selectedQuote: {
+      marketName: "AIG",
+      value: 33900
+    },
     quotes: [
       {
         id: "1",

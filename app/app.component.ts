@@ -42,6 +42,26 @@ export class AppComponent {
     return this.hiddenColumns.indexOf(columnName) > -1;
   }
 
+  public getDifference(item: any): string {
+    let result = '';
+    if (item.expiringPremium && item.selectedQuote?.value) {
+      const difference = item.selectedQuote.value - item.expiringPremium;
+      const percentage = (difference/ item.expiringPremium) * 100;
+      result = `${this.numberWithCommas(difference)} (${percentage.toFixed(2)}%)`;
+    }
+
+    return result;
+  }
+
+  private numberWithCommas(x: number): string {
+    const parts = x
+      .toFixed(2)
+      .toString()
+      .split('.');
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return parts.join('.').replace(/\.00$/, '');
+  }
+
   public hideColumn(columnName: string): void {
     const hiddenColumns = this.hiddenColumns;
 

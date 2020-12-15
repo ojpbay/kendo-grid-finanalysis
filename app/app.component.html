@@ -78,7 +78,7 @@
 					<ng-template kendoGridEditTemplate let-dataItem="dataItem" let-column="column"
 						let-formGroup="formGroup">
 
-						<mat-select [(value)]="selectedQuote">
+						<mat-select [(value)]="dataItem.selectedQuote.value">
 							<mat-option value="654654">Aegis</mat-option>
 							<mat-option value="45000">AIG</mat-option>
 							<mat-option value="215000">Chubb</mat-option>
@@ -90,16 +90,16 @@
 				</kendo-grid-column>
 				<kendo-grid-column title="Premium" [locked]="false" width="150">
 					<ng-template kendoGridCellTemplate let-dataItem="dataItem">
-						{{dataItem?.quotes[0]?.grossPremium?.value | currency}}
+						{{dataItem.selectedQuote.value | currency}}
 					</ng-template>
+
+          <!-- <ng-template kendoGridFooterTemplate let-column="column">
+            Total: {{654654 | currency}}
+          </ng-template> -->
 				</kendo-grid-column>
 				<kendo-grid-column title="Difference" [locked]="false" width="150">
 					<ng-template kendoGridCellTemplate let-dataItem="dataItem">
-
-						<ng-container *ngIf="dataItem.difference">
-							{{dataItem.difference.value | currency}}
-							<span>({{dataItem.difference.percentageValue | percent : '1.2-2'}})</span>
-						</ng-container>
+            {{getDifference(dataItem)}}						
 					</ng-template>
 				</kendo-grid-column>
 			</kendo-grid-column-group>
