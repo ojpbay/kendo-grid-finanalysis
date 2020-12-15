@@ -4,24 +4,32 @@
 		<span class="example-spacer"></span>
 		<mat-icon class="example-icon" aria-hidden="false" (click)="addStrategy()" matTooltip="Add New Strategy">add
 		</mat-icon>
+    <mat-icon class="example-icon" aria-hidden="false" (click)="restoreColumns()" matTooltip="Restore Hidden Strategies">refresh
+		</mat-icon>
 	</mat-toolbar-row>
 
-	<mat-toolbar-row class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center">
+	<mat-toolbar-row fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center">
 		<ng-container *ngFor="let strategy of strategies">
 			<div fxFlex="25" *ngIf="strategy.columnName !== 'lineOfBusiness' && strategy.columnName !== 'expiringStrategy'">
 
-				<mat-checkbox id="{{strategy.columnName}}" [disabled]="isDisabled(strategy.columnName)"
-        [checked]="!isHidden(strategy.columnName)" (change)="hideColumn(strategy.columnName)"
+				<mat-checkbox 
+          id="{{strategy.columnName}}"
+          [checked]="!isHidden(strategy.columnName)"
+          (change)="hideColumn(strategy.columnName)"
 				>
+        {{strategy.title}}
 				</mat-checkbox>
-				<label class="k-checkbox-label" for="{{strategy.columnName}}">{{strategy.title}}</label>
 
 			</div>
 		</ng-container>
 	</mat-toolbar-row>
 </mat-toolbar>
 
-<kendo-grid [data]="gridData" [reorderable]="true" (cellClick)="cellClickHandler($event)">
+<kendo-grid
+  [data]="gridData"
+  [reorderable]="true"
+  (cellClick)="cellClickHandler($event)">
+
 	<kendo-grid-column field="lineOfBusiness" title="Quote Summary" width="200" [locked]="true">
 
 	</kendo-grid-column>

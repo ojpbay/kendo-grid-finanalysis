@@ -42,13 +42,6 @@ export class AppComponent {
     return this.hiddenColumns.indexOf(columnName) > -1;
   }
 
-  public isDisabled(columnName: string): boolean {
-    return (
-      this.strategies.length - this.hiddenColumns.length === 1 &&
-      !this.isHidden(columnName)
-    );
-  }
-
   public hideColumn(columnName: string): void {
     const hiddenColumns = this.hiddenColumns;
 
