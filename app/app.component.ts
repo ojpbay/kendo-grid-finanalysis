@@ -82,8 +82,8 @@ export class AppComponent {
 
   private copyStrategyInternal(strategy: any): any {
     const length = this.strategies.length - 1;
-    const colName = strategy?.columName ? `${strategy.columnName}(${length})` : `newStrategy${length}`;
-    const title = strategy?.title ? `${strategy.title} - Copy` : `New Strategy (${length})`;
+    const colName = strategy?.columName ? `${strategy.columnName}(${length})` : null;
+    const title = strategy?.title ? `${strategy.title} - Copy` : null;
     
     const strat = {
       columnName: colName,

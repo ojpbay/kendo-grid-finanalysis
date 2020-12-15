@@ -6,13 +6,13 @@
 		</mat-icon>
 	</mat-toolbar-row>
 
-	<mat-toolbar-row>
+	<mat-toolbar-row class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center">
 		<ng-container *ngFor="let strategy of strategies">
-			<div *ngIf="strategy.columnName !== 'lineOfBusiness' && strategy.columnName !== 'expiringStrategy'"
+			<div fxFlex="25%" *ngIf="strategy.columnName !== 'lineOfBusiness' && strategy.columnName !== 'expiringStrategy'"
 				class="col-xs-6 col-md-4 example-col">
 
 				<mat-checkbox id="{{strategy.columnName}}" [disabled]="isDisabled(strategy.columnName)"
-					[checked]="!isHidden(strategy.columnName)" (change)="hideColumn(strategy.columnName)">
+					[checked]="!isHidden(strategy.columnName)" (change)="hideColumn(strategy.columnName)" class="full-width">
 				</mat-checkbox>
 				<label class="k-checkbox-label" for="{{strategy.columnName}}">{{strategy.title}}</label>
 

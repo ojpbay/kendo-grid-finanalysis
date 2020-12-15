@@ -7,6 +7,7 @@ import { DemoMaterialModule } from "./material-module";
 import { HttpClientModule } from "@angular/common/http";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from "@angular/material/form-field";
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { AppComponent } from "./app.component";
 
@@ -19,7 +20,8 @@ import { AppComponent } from "./app.component";
     HttpClientModule,
     DemoMaterialModule,
     MatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlexLayoutModule
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
