@@ -52,7 +52,7 @@
 
 				<!-- header template -->
 				<ng-template kendoGridHeaderTemplate let-column let-columnIndex="columnIndex">
-					<mat-toolbar>
+					<mat-toolbar style="height: 100px;">
 						<mat-form-field class="full-width">
 							<textarea matInput
                         #autosize="cdkTextareaAutosize"
@@ -60,7 +60,7 @@
                         [value]="column.title"
                         class="full-width"
                         cdkTextareaAutosize                        
-                        cdkAutosizeMinRows="2"
+                        cdkAutosizeMinRows="3"
                         cdkAutosizeMaxRows="5">
 							</textarea>
             </mat-form-field>

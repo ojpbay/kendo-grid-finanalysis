@@ -3,8 +3,8 @@ export const sampleQuotes = [
     lineOfBusiness: "Workers Compensation",
     expiringPremium: 207494,
     selectedQuote: {
-      marketName: "AIG",
-      value: 33900
+      marketName: null,
+      value: null
     },
     quotes: [
       {
@@ -22,8 +22,8 @@ export const sampleQuotes = [
     lineOfBusiness: "Auto Liability",
     expiringPremium: 23361,
     selectedQuote: {
-      marketName: "AIG",
-      value: 33900
+      marketName: null,
+      value: null
     },
     difference: {
       value: 10549,
@@ -69,7 +69,6 @@ export const sampleQuotes = [
           currency: "USD"
         }
       },
-
       {
         id: "5",
         marketName: "Travalers",
@@ -95,7 +94,7 @@ export const sampleQuotes = [
     lineOfBusiness: "General Liability",
     expiringPremium: 400000,
     selectedQuote: {
-      marketName: "American Contractors",
+      marketName: null,
       value: null
     },
     difference: {

@@ -17,7 +17,7 @@ export class AppComponent {
     },
     {
       columnName: "riskStrategy",
-      title: "My First strategy"
+      title: "2018-2019" + "\n" + "AIG WC / AL / GL"
     }
   ];
 
