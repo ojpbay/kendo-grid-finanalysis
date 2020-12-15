@@ -53,7 +53,15 @@
 
 
 						<mat-form-field class="example-full-width">
-							<input matInput placeholder="Enter strategy name" [value]="column.title" class="full-width">
+							<textarea matInput
+                        #autosize="cdkTextareaAutosize"
+                        placeholder="Enter strategy name"
+                        [value]="column.title"
+                        class="full-width"
+                        cdkTextareaAutosize                        
+                        cdkAutosizeMinRows="2"
+                        cdkAutosizeMaxRows="5">
+							</textarea>
             </mat-form-field>
 
 							<span class="example-spacer"></span>
@@ -78,7 +86,7 @@
 					<ng-template kendoGridEditTemplate let-dataItem="dataItem" let-column="column"
 						let-formGroup="formGroup">
 
-						<mat-select [(value)]="dataItem.selectedQuote.value">
+						<mat-select [(value)]="dataItem.selectedQuote.value" placeholder="Select quote">
 							<mat-option value="654654">Aegis</mat-option>
 							<mat-option value="45000">AIG</mat-option>
 							<mat-option value="215000">Chubb</mat-option>

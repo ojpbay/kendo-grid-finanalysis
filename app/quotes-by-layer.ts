@@ -96,7 +96,7 @@ export const sampleQuotes = [
     expiringPremium: 400000,
     selectedQuote: {
       marketName: "American Contractors",
-      value: 504600
+      value: null
     },
     difference: {
       value: 104600,
