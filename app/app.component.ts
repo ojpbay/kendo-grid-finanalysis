@@ -24,15 +24,23 @@ export class AppComponent {
   public quotes: any[] = [
     {
       id: 1,
-      name: 'AIG'
+      name: 'Aegon...',
+      premium: 654654
     },
     {
       id: 2,
-      name: 'Chubb'
+      name: 'AIG...',
+      premium: 45000
     },
     {
       id: 3,
-      name: 'Aegon'
+      name: 'Chubb...',
+      premium: 215000
+    },
+    {
+      id: 4,
+      name: 'Hartford...',
+      premium: 301006
     }
   ];
 

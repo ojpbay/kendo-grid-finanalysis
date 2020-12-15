@@ -89,11 +89,8 @@
 						let-formGroup="formGroup">
 
 						<mat-select [(value)]="dataItem.selectedQuote.value" placeholder="Select quote">
-							<mat-option value="654654">Aegis</mat-option>
-							<mat-option value="45000">AIG</mat-option>
-							<mat-option value="215000">Chubb</mat-option>
+							<mat-option *ngFor="let quote of quotes" [value]="quote.premium">{{quote.name}}</mat-option>
 						</mat-select>
-
 
 					</ng-template>
 
