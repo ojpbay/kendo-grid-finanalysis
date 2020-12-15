@@ -55,9 +55,9 @@
 					<mat-toolbar style="height: 100px;">
 						<mat-form-field class="full-width">
 							<textarea matInput
+                        [(ngModel)]='strat.title'
                         #autosize="cdkTextareaAutosize"
                         placeholder="Enter strategy name"
-                        [value]="column.title"
                         class="full-width"
                         cdkTextareaAutosize                        
                         cdkAutosizeMinRows="3"
