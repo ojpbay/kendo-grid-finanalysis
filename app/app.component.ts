@@ -26,33 +26,9 @@ export class AppComponent {
   }
 
   public get sumSelectedPremium() {
-    const aggregateResult = aggregateBy(this.gridData, [{ aggregate: "sum", field: "selectedPremium" }]);
-    
+    const aggregateResult = aggregateBy(this.gridData, [{ aggregate: "sum", field: "selectedPremium" }]);    
     return aggregateResult.selectedPremium.sum;
   }
-
-  public quotes: any[] = [
-    {
-      id: 1,
-      name: 'Aegon...',
-      premium: 654654
-    },
-    {
-      id: 2,
-      name: 'AIG...',
-      premium: 45000
-    },
-    {
-      id: 3,
-      name: 'Chubb...',
-      premium: 215000
-    },
-    {
-      id: 4,
-      name: 'Hartford...',
-      premium: 301006
-    }
-  ];
 
   public hiddenColumns: string[] = [];
 

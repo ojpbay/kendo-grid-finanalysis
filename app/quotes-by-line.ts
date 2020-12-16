@@ -10,6 +10,7 @@ export const quotes = [
         id: 1,
         marketName: "AIG",
         responseType: "offered",
+        grossPremium: 143900,
       }
     ],
   },

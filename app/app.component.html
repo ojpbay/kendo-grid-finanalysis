@@ -79,14 +79,15 @@
 
 					<ng-template kendoGridCellTemplate let-dataItem="dataItem">
 						<div class="placeholder">
-							{{ (dataItem?.selectedPremium | currency) || 'Select Quote' }}
+							{{ (dataItem?.selectedPremium && dataItem.selectedPremium !== 0) ? (dataItem.selectedPremium | currency) : '-' }}
 						</div>
 					</ng-template>
 					<ng-template kendoGridEditTemplate let-dataItem="dataItem" let-column="column"
 						let-formGroup="formGroup">
 
 						<mat-select [(value)]="dataItem.selectedPremium" placeholder="Select quote">
-							<mat-option *ngFor="let quote of quotes" [value]="quote.premium">{{quote.name}}</mat-option>
+              <mat-option [value]="0">-- Select Quote --</mat-option>
+							<mat-option *ngFor="let quote of dataItem.quotes" [value]="quote.grossPremium">{{quote.marketName}}</mat-option>
 						</mat-select>
 
 					</ng-template>
