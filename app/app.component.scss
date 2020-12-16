@@ -32,5 +32,17 @@
 
 .k-grid-header, .k-grid-toolbar, .k-grouping-header, .k-grid-add-row, .k-grid-footer {
     color: #656565;
-    background-color: #f6f6f6;
+    background-color: #f6f6f6;    
+}
+
+.mat-toolbar.mat-primary {
+    background: #e4e4e4;
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+    color: #555;
+}
+
+.k-checkbox:checked {
+    border-color: #702082 !important;
+    background-color: #702082 !important;
 }
