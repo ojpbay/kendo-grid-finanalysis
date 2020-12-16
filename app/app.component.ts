@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from "@angular/core";
-import { sampleQuotes } from "./quotes-by-layer";
+import { quotes } from "./quotes-by-line";
 import { RowClassArgs } from '@progress/kendo-angular-grid';
 import { aggregateBy } from '@progress/kendo-data-query';
 
@@ -10,7 +10,7 @@ import { aggregateBy } from '@progress/kendo-data-query';
   encapsulation: ViewEncapsulation.None // needed for row styles
 })
 export class AppComponent {
-  public gridData: any[] = sampleQuotes;
+  public gridData: any[] = quotes;
 
   public strategies: any[] = [
     { columnName: "lineOfBusiness", title: "Quote Summary" },

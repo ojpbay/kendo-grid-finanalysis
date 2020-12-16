@@ -1,113 +1,74 @@
-export const sampleQuotes = [
+export const quotes = [
   {
     lineOfBusiness: "Workers Compensation",
     retention: "500k",
     expiringPremium: 207494,
     selectedPremium: null,
+    selectedQuoteId: null,
     quotes: [
       {
-        id: "1",
+        id: 1,
         marketName: "AIG",
-        isIncumbent: true,
-        sent: true,
         responseType: "offered",
-        lineOfBusiness: "General Liability 1"
       }
     ],
-    riskStrategy: "My first strategy"
   },
   {
     lineOfBusiness: "Auto Liability",
     retention: "250k",
     expiringPremium: 23361,
     selectedPremium: null,
-    difference: {
-      value: 10549,
-      percentageValue: 0.4511
-    },
+    selectedQuoteId: null,
     quotes: [
       {
-        id: "2",
+        id: 2,
         marketName: "AIG",
-        isIncumbent: true,
-        sent: true,
         responseType: "offered",
         lineOfBusiness: "Business Auto 1",
-        grossPremium: {
-          value: 33900,
-          currency: "USD"
-        },
+        grossPremium: 33900,
         offeredLineRate: 100,
         brokerageRate: 29.5,
-        additionalPolicyCost: {
-          value: 3200,
-          currency: "USD"
-        },
+        additionalPolicyCost: 3200,
         comments: "Physical damage excluded",
         subjectivity: "up to date loss details"
       },
       {
         id: "3",
         marketName: "AXA (AXA XL)",
-        isIncumbent: true,
         contact: "Vicky",
-        sent: true,
         responseType: "offered",
         lineOfBusiness: "Business Auto 1",
-        grossPremium: {
-          value: 35000,
-          currency: "USD"
-        },
+        grossPremium: 35000,
         offeredLineRate: 100,
         brokerageRate: 28.5,
-        additionalPolicyCost: {
-          value: 3500,
-          currency: "USD"
-        }
+        additionalPolicyCost: 3500
       },
       {
         id: "5",
         marketName: "Travalers",
-        isIncumbent: true,
-        sent: true,
         responseType: "offered",
         lineOfBusiness: "Workers Compensation 1",
-        grossPremium: {
-          value: 262600,
-          currency: "USD"
-        },
+        grossPremium: 262600,
         offeredLineRate: 100,
         brokerageRate: 25,
-        additionalPolicyCost: {
-          value: 23500,
-          currency: "USD"
-        }
+        additionalPolicyCost: 23500
       }
-    ],
-    riskStrategy: "another strategy"
+    ]
   },
   {
     lineOfBusiness: "General Liability",
     retention: "100k",
     expiringPremium: 400000,
     selectedPremium: null,
-    difference: {
-      value: 104600,
-      percentageValue: 0.2615
-    },
+    selectedQuoteId: null,
     quotes: [
       {
         id: "4",
         marketName: "Hartford Group",
-        isIncumbent: false,
-        sent: true,
         responseType: "offered",
         lineOfBusiness: "General Liability 1",
-        grossPremium: {
-          value: 504600,
-          currency: "USD"
-        }
-      }
+        grossPremium: 504600
+      }      
     ]
   }
 ];
