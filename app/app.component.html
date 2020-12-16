@@ -32,6 +32,10 @@
 <kendo-grid
   [data]="gridData"
   [reorderable]="true"
+  [groupable]="false"
+  [filterable]="false"
+  [pageable]="false"
+  [sortable]="false"
   (cellClick)="cellClickHandler($event)"
   [rowClass]="rowCallback">
 
