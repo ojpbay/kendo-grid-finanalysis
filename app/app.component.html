@@ -42,7 +42,7 @@
 
 		<<ng-template kendoGridFooterTemplate>
 			{{sumExpiringPremium | currency}}
-		</ng-template>
+			</ng-template>
 	</kendo-grid-column>
 
 	<ng-container *ngFor="let strat of strategies">
@@ -82,17 +82,21 @@
 
 					<ng-template kendoGridCellTemplate let-dataItem="dataItem">
 						<div class="placeholder">
-							{{ (dataItem?.selectedQuote?.value | currency) || 'Select Quote' }}
+							{{ (dataItem?.selectedPremium | currency) || 'Select Quote' }}
 						</div>
 					</ng-template>
 					<ng-template kendoGridEditTemplate let-dataItem="dataItem" let-column="column"
 						let-formGroup="formGroup">
 
-						<mat-select [(value)]="dataItem.selectedQuote.value" placeholder="Select quote">
+						<mat-select [(value)]="dataItem.selectedPremium" placeholder="Select quote">
 							<mat-option *ngFor="let quote of quotes" [value]="quote.premium">{{quote.name}}</mat-option>
 						</mat-select>
 
 					</ng-template>
+
+					<<ng-template kendoGridFooterTemplate>
+						{{sumSelectedPremium | currency}}
+						</ng-template>
 
 				</kendo-grid-column>
 				<!-- <kendo-grid-column title="Premium" [locked]="false" width="150">

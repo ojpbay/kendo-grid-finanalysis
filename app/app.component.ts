@@ -30,6 +30,12 @@ export class AppComponent {
     return aggregateResult.expiringPremium.sum;
   }
 
+  public get sumSelectedPremium() {
+    const aggregateResult = aggregateBy(this.gridData, [{ aggregate: "sum", field: "selectedPremium" }]);
+    
+    return aggregateResult.selectedPremium.sum;
+  }
+
   public quotes: any[] = [
     {
       id: 1,

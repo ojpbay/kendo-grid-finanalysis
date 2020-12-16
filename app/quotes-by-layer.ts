@@ -2,6 +2,7 @@ export const sampleQuotes = [
   {
     lineOfBusiness: "Workers Compensation",
     expiringPremium: 207494,
+    selectedPremium: null,
     selectedQuote: {
       marketName: null,
       value: null
@@ -21,6 +22,7 @@ export const sampleQuotes = [
   {
     lineOfBusiness: "Auto Liability",
     expiringPremium: 23361,
+    selectedPremium: null,
     selectedQuote: {
       marketName: null,
       value: null
@@ -93,6 +95,7 @@ export const sampleQuotes = [
   {
     lineOfBusiness: "General Liability",
     expiringPremium: 400000,
+    selectedPremium: null,
     selectedQuote: {
       marketName: null,
       value: null
