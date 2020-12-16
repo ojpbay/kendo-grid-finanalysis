@@ -67,8 +67,8 @@ export class AppComponent {
 
   public getDifference(item: any): string {
     let result = '';
-    if (item.expiringPremium && item.selectedQuote?.value) {
-      const difference = item.selectedQuote.value - item.expiringPremium;
+    if (item.expiringPremium && item.selectedPremium) {
+      const difference = item.selectedPremium - item.expiringPremium;
       const percentage = (difference/ item.expiringPremium) * 100;
       result = `${this.numberWithCommas(difference)} (${percentage.toFixed(2)}%)`;
     }

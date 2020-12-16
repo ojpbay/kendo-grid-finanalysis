@@ -40,9 +40,9 @@
 			{{dataItem.expiringPremium | currency}}
 		</ng-template>
 
-		<<ng-template kendoGridFooterTemplate>
+		<ng-template kendoGridFooterTemplate>
 			{{sumExpiringPremium | currency}}
-			</ng-template>
+		</ng-template>
 	</kendo-grid-column>
 
 	<ng-container *ngFor="let strat of strategies">
@@ -50,7 +50,6 @@
 
 			<kendo-grid-column-group [title]="strat.title" [locked]="false" *ngIf="!isHidden(strat.columnName)">
 
-				<!-- header template -->
 				<ng-template kendoGridHeaderTemplate let-column let-columnIndex="columnIndex">
 					<mat-toolbar style="height: 100px;">
 						<mat-form-field class="full-width">
@@ -94,20 +93,12 @@
 
 					</ng-template>
 
-					<<ng-template kendoGridFooterTemplate>
+					<ng-template kendoGridFooterTemplate>
 						{{sumSelectedPremium | currency}}
-						</ng-template>
-
-				</kendo-grid-column>
-				<!-- <kendo-grid-column title="Premium" [locked]="false" width="150">
-					<ng-template kendoGridCellTemplate let-dataItem="dataItem">
-						{{dataItem.selectedQuote.value | currency}}
 					</ng-template>
 
-           <ng-template kendoGridFooterTemplate let-column="column">
-            Total: {{654654 | currency}}
-          </ng-template> 
-				</kendo-grid-column> -->
+				</kendo-grid-column>
+
 				<kendo-grid-column title="Difference" [locked]="false" width="200">
 					<ng-template kendoGridCellTemplate let-dataItem="dataItem">
 						{{getDifference(dataItem)}}

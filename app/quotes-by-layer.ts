@@ -1,12 +1,9 @@
 export const sampleQuotes = [
   {
     lineOfBusiness: "Workers Compensation",
+    retention: "500k",
     expiringPremium: 207494,
     selectedPremium: null,
-    selectedQuote: {
-      marketName: null,
-      value: null
-    },
     quotes: [
       {
         id: "1",
@@ -21,12 +18,9 @@ export const sampleQuotes = [
   },
   {
     lineOfBusiness: "Auto Liability",
+    retention: "250k",
     expiringPremium: 23361,
     selectedPremium: null,
-    selectedQuote: {
-      marketName: null,
-      value: null
-    },
     difference: {
       value: 10549,
       percentageValue: 0.4511
@@ -94,12 +88,9 @@ export const sampleQuotes = [
   },
   {
     lineOfBusiness: "General Liability",
+    retention: "100k",
     expiringPremium: 400000,
     selectedPremium: null,
-    selectedQuote: {
-      marketName: null,
-      value: null
-    },
     difference: {
       value: 104600,
       percentageValue: 0.2615
