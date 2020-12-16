@@ -3,25 +3,23 @@
 		<span>Casualty Comparison</span>
 		<span class="example-spacer"></span>
 
-    <button mat-icon-button (click)="addStrategy()" matTooltip="Add New Strategy">
+		<button mat-icon-button (click)="addStrategy()" matTooltip="Add New Strategy">
       <mat-icon>add</mat-icon>
     </button>
 
-    <button mat-icon-button (click)="restoreColumns()" matTooltip="Restore Hidden Strategies">
+		<button mat-icon-button (click)="restoreColumns()" matTooltip="Restore Hidden Strategies">
       <mat-icon>refresh</mat-icon>
     </button>
 	</mat-toolbar-row>
 
 	<mat-toolbar-row fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="start center">
 		<ng-container *ngFor="let strategy of strategies">
-			<div fxFlex="33" *ngIf="strategy.columnName !== 'lineOfBusiness' && strategy.columnName !== 'expiringStrategy'">
+			<div fxFlex="33"
+				*ngIf="strategy.columnName !== 'lineOfBusiness' && strategy.columnName !== 'expiringStrategy'">
 
-				<mat-checkbox 
-          id="{{strategy.columnName}}"
-          [checked]="!isHidden(strategy.columnName)"
-          (change)="hideColumn(strategy.columnName)"
-				>
-        {{strategy.title}}
+				<mat-checkbox id="{{strategy.columnName}}" [checked]="!isHidden(strategy.columnName)"
+					(change)="hideColumn(strategy.columnName)">
+					{{strategy.title}}
 				</mat-checkbox>
 
 			</div>
@@ -29,15 +27,8 @@
 	</mat-toolbar-row>
 </mat-toolbar>
 
-<kendo-grid
-  [data]="gridData"
-  [reorderable]="true"
-  [groupable]="false"
-  [filterable]="false"
-  [pageable]="false"
-  [sortable]="false"
-  (cellClick)="cellClickHandler($event)"
-  [rowClass]="rowCallback">
+<kendo-grid [data]="gridData" [reorderable]="true" [groupable]="false" [filterable]="false" [pageable]="false"
+	[sortable]="false" (cellClick)="cellClickHandler($event)" [rowClass]="rowCallback">
 
 	<kendo-grid-column field="lineOfBusiness" title="Quote Summary" width="200" [locked]="true">
 
@@ -47,6 +38,10 @@
 	<kendo-grid-column field="expiringPremium" title="Expiring" width="150" [locked]="false">
 		<ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
 			{{dataItem.expiringPremium | currency}}
+		</ng-template>
+
+		<<ng-template kendoGridFooterTemplate>
+			{{sumExpiringPremium | currency}}
 		</ng-template>
 	</kendo-grid-column>
 
@@ -64,18 +59,18 @@
                         #autosize="cdkTextareaAutosize"
                         placeholder="Enter strategy name"
                         class="full-width"
-                        cdkTextareaAutosize                        
+                        cdkTextareaAutosize
                         cdkAutosizeMinRows="3"
                         cdkAutosizeMaxRows="5">
 							</textarea>
-            </mat-form-field>
+						</mat-form-field>
 
-							<span class="example-spacer"></span>
+						<span class="example-spacer"></span>
 
-							<button mat-icon-button matTooltip="Copy Strategy" (click)="copyStrategy(strat)">
+						<button mat-icon-button matTooltip="Copy Strategy" (click)="copyStrategy(strat)">
                 <mat-icon>content_copy</mat-icon>
               </button>
-							<button mat-icon-button class="example-icon" matTooltip="Delete Strategy" (click)="deleteStrategy(strat)">
+						<button mat-icon-button class="example-icon" matTooltip="Delete Strategy" (click)="deleteStrategy(strat)">
                 <mat-icon>delete</mat-icon>                
               </button>
 					</mat-toolbar>
@@ -111,7 +106,7 @@
 				</kendo-grid-column> -->
 				<kendo-grid-column title="Difference" [locked]="false" width="200">
 					<ng-template kendoGridCellTemplate let-dataItem="dataItem">
-            {{getDifference(dataItem)}}						
+						{{getDifference(dataItem)}}
 					</ng-template>
 				</kendo-grid-column>
 			</kendo-grid-column-group>

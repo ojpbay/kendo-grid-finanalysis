@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation } from "@angular/core";
 import { sampleQuotes } from "./quotes-by-layer";
 import { RowClassArgs } from '@progress/kendo-angular-grid';
+import { aggregateBy } from '@progress/kendo-data-query';
 
 @Component({
   selector: "my-app",
@@ -22,6 +23,12 @@ export class AppComponent {
       title: "2018-2019" + "\n" + "AIG WC / AL / GL"
     }
   ];
+
+  public get sumExpiringPremium() {
+    const aggregateResult = aggregateBy(this.gridData, [{ aggregate: "sum", field: "expiringPremium" }]);
+    
+    return aggregateResult.expiringPremium.sum;
+  }
 
   public quotes: any[] = [
     {
