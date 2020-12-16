@@ -13,11 +13,6 @@ export class AppComponent {
   public gridData: any[] = quotes;
 
   public strategies: any[] = [
-    { columnName: "lineOfBusiness", title: "Quote Summary" },
-    {
-      columnName: "expiringStrategy",
-      title: "Expiring"
-    },
     {
       columnName: "riskStrategy",
       title: "2018-2019" + "\n" + "AIG WC / AL / GL"

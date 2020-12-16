@@ -14,8 +14,7 @@
 
 	<mat-toolbar-row fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="start center">
 		<ng-container *ngFor="let strategy of strategies">
-			<div fxFlex="33"
-				*ngIf="strategy.columnName !== 'lineOfBusiness' && strategy.columnName !== 'expiringStrategy'">
+			<div fxFlex="33">
 
 				<mat-checkbox id="{{strategy.columnName}}" [checked]="!isHidden(strategy.columnName)"
 					(change)="hideColumn(strategy.columnName)">
@@ -46,7 +45,6 @@
 	</kendo-grid-column>
 
 	<ng-container *ngFor="let strat of strategies">
-		<ng-container *ngIf="strat.columnName !== 'lineOfBusiness' && strat.columnName !== 'expiringStrategy'">
 
 			<kendo-grid-column-group [title]="strat.title" [locked]="false" *ngIf="!isHidden(strat.columnName)">
 
@@ -105,8 +103,6 @@
 					</ng-template>
 				</kendo-grid-column>
 			</kendo-grid-column-group>
-
-		</ng-container>
 	</ng-container>
 
 </kendo-grid>
