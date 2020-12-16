@@ -1,10 +1,12 @@
-import { Component } from "@angular/core";
+import { Component, ViewEncapsulation } from "@angular/core";
 import { sampleQuotes } from "./quotes-by-layer";
+import { RowClassArgs } from '@progress/kendo-angular-grid';
 
 @Component({
   selector: "my-app",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"]
+  styleUrls: ["./app.component.scss"],
+  encapsulation: ViewEncapsulation.None // needed for row styles
 })
 export class AppComponent {
   public gridData: any[] = sampleQuotes;
@@ -119,6 +121,14 @@ export class AppComponent {
           sender.editCell(rowIndex, columnIndex);
       }
     }
+
+  public rowCallback(context: RowClassArgs) {
+      const isEven = context.index % 2 == 0;
+      return {
+          even: isEven,
+          odd: !isEven
+      };
+  }
 
 }
 

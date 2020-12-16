@@ -1,6 +1,6 @@
 <mat-toolbar color="primary" id="toolbar">
 	<mat-toolbar-row>
-		<span>Financial Analysis Summary</span>
+		<span>Casualty Comparison</span>
 		<span class="example-spacer"></span>
 
     <button mat-icon-button (click)="addStrategy()" matTooltip="Add New Strategy">
@@ -32,7 +32,8 @@
 <kendo-grid
   [data]="gridData"
   [reorderable]="true"
-  (cellClick)="cellClickHandler($event)">
+  (cellClick)="cellClickHandler($event)"
+  [rowClass]="rowCallback">
 
 	<kendo-grid-column field="lineOfBusiness" title="Quote Summary" width="200" [locked]="true">
 

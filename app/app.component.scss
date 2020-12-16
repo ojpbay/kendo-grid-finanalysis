@@ -21,3 +21,16 @@
 .placeholder {
   cursor: pointer;
 }
+
+.k-grid tr.odd {
+  background-color: #f5f5f5;
+}
+
+.k-grid tr.even {
+  background-color: #fff;
+}
+
+.k-grid-header, .k-grid-toolbar, .k-grouping-header, .k-grid-add-row, .k-grid-footer {
+    color: #656565;
+    background-color: #f6f6f6;
+}
