@@ -87,7 +87,7 @@
 
 						<mat-select [(value)]="dataItem.selectedPremium" placeholder="Select quote">
               <mat-option [value]="0">-- Select Quote --</mat-option>
-							<mat-option *ngFor="let quote of dataItem.quotes" [value]="quote.grossPremium">{{quote.marketName}}</mat-option>
+							<mat-option *ngFor="let quote of dataItem.quotes" [value]="quote.grossPremium">{{quote.marketName}}... (summary info here)</mat-option>
 						</mat-select>
 
 					</ng-template>
