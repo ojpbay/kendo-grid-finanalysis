@@ -90,9 +90,6 @@ export class AppComponent {
 
   public onQuoteChange(selectedQuote: any, strat: any, dataItem: any) {
     const carrier = selectedQuote.source.triggerValue.substring(0, selectedQuote.source.triggerValue.indexOf("..."));
-
-    debugger;
-
     //console.log(carrier);
     if (carrier) {
       strat.quotedCarriers.push(carrier);

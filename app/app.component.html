@@ -25,6 +25,9 @@
     fxLayout.xs="column"
     fxLayoutAlign="start center"
   >
+
+  <p fxFlex="100" style="font-size: 14px; margin-top: 10px;">Show / hide strategies</p>
+
     <ng-container *ngFor="let strategy of strategies">
       <div fxFlex="50">
         <mat-checkbox
@@ -140,13 +143,11 @@
             >
           </mat-toolbar-row>
 
-          <mat-toolbar-row fxLayout="column">
-            <div fxFlex fxLayout="row" fxLayoutAlign="end center"
+          <mat-toolbar-row fxLayout="column" fxLayoutAlign="end center">
+            <div fxFlex="100"
               *ngFor="let line of strat.quotedLines; let i = index; last as isLast"
             >
-              <div fxFlex="100">
                 {{line}}
-              </div>
             </div>
           </mat-toolbar-row>
         </mat-toolbar>
