@@ -94,8 +94,10 @@ export class AppComponent {
     debugger;
 
     //console.log(carrier);
-    strat.quotedCarriers.push(carrier);
-    strat.quotedLines.push(`${dataItem.lineOfBusiness} ${dataItem.retention}`);
+    if (carrier) {
+      strat.quotedCarriers.push(carrier);
+      strat.quotedLines.push(`${dataItem.lineOfBusiness} ${dataItem.retention}`);
+    }
   }
 
   public deleteStrategy(strategy: any): void {
