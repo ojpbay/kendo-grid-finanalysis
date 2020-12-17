@@ -46,7 +46,7 @@ export const quotes = [
       },
       {
         id: "5",
-        marketName: "Travalers",
+        marketName: "Travelers",
         responseType: "offered",
         lineOfBusiness: "Workers Compensation 1",
         grossPremium: 262600,

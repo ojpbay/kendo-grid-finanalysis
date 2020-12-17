@@ -7,7 +7,8 @@ import { aggregateBy } from '@progress/kendo-data-query';
   selector: "my-app",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
-  encapsulation: ViewEncapsulation.None // needed for row styles
+  encapsulation: ViewEncapsulation.None, // needed for row styles
+  preserveWhitespaces: true
 })
 export class AppComponent {
   public gridData: any[] = quotes;
@@ -15,9 +16,21 @@ export class AppComponent {
   public strategies: any[] = [
     {
       columnName: "riskStrategy",
-      title: "2018-2019" + "\n" + "AIG WC / AL / GL"
+      description: "",
+      quotedCarriers: [], //["AIG", "Travelers", "Hartford"],
+      quotedLines: [], //[ "WC 500k", "AL 250k", "GL 100k" ],
+      title: "",
+      /*title: `AIG Travelers Hartford
+              WC  500k
+              AL  250k
+              GL  100k
+              `,*/
     }
   ];
+
+  public getTitle(strategy: any) {
+    return strategy.title + " " + strategy.carriers + " " + strategy.line + strategy.retention;
+  }
 
   public get sumExpiringPremium() {
     const aggregateResult = aggregateBy(this.gridData, [{ aggregate: "sum", field: "expiringPremium" }]);
@@ -73,6 +86,16 @@ export class AppComponent {
   public copyStrategy(strategy: any): void {
     const newStrat = this.copyStrategyInternal(strategy);
     this.strategies.push(newStrat);
+  }
+
+  public onQuoteChange(selectedQuote: any, strat: any, dataItem: any) {
+    const carrier = selectedQuote.source.triggerValue.substring(0, selectedQuote.source.triggerValue.indexOf("..."));
+
+    debugger;
+
+    //console.log(carrier);
+    strat.quotedCarriers.push(carrier);
+    strat.quotedLines.push(`${dataItem.lineOfBusiness} ${dataItem.retention}`);
   }
 
   public deleteStrategy(strategy: any): void {

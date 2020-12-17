@@ -1,113 +1,195 @@
 <mat-toolbar color="primary" id="toolbar">
-	<mat-toolbar-row>
-		<span>Casualty Comparison</span>
-		<span class="example-spacer"></span>
+  <mat-toolbar-row>
+    <span>Casualty Comparison</span>
+    <span class="example-spacer"></span>
 
-		<button mat-icon-button (click)="addStrategy()" matTooltip="Add New Strategy">
+    <button
+      mat-icon-button
+      (click)="addStrategy()"
+      matTooltip="Add New Strategy"
+    >
       <mat-icon>add</mat-icon>
     </button>
 
-		<button mat-icon-button (click)="restoreColumns()" matTooltip="Restore Hidden Strategies">
+    <button
+      mat-icon-button
+      (click)="restoreColumns()"
+      matTooltip="Restore Hidden Strategies"
+    >
       <mat-icon>refresh</mat-icon>
     </button>
-	</mat-toolbar-row>
+  </mat-toolbar-row>
 
-	<mat-toolbar-row fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="start center">
-		<ng-container *ngFor="let strategy of strategies">
-			<div fxFlex="33">
-
-				<mat-checkbox id="{{strategy.columnName}}" [checked]="!isHidden(strategy.columnName)"
-					(change)="hideColumn(strategy.columnName)">
-					{{strategy.title}}
-				</mat-checkbox>
-
-			</div>
-		</ng-container>
-	</mat-toolbar-row>
+  <mat-toolbar-row
+    fxLayout="row wrap"
+    fxLayout.xs="column"
+    fxLayoutAlign="start center"
+  >
+    <ng-container *ngFor="let strategy of strategies">
+      <div fxFlex="50">
+        <mat-checkbox
+          id="{{strategy.columnName}}"
+          [checked]="!isHidden(strategy.columnName)"
+          (change)="hideColumn(strategy.columnName)"
+        >
+          {{strategy.title}}
+        </mat-checkbox>
+      </div>
+    </ng-container>
+  </mat-toolbar-row>
 </mat-toolbar>
 
-<kendo-grid [data]="gridData" [reorderable]="true" [groupable]="false" [filterable]="false" [pageable]="false"
-	[sortable]="false" (cellClick)="cellClickHandler($event)" [rowClass]="rowCallback">
+<kendo-grid
+  [data]="gridData"
+  [reorderable]="true"
+  [groupable]="false"
+  [filterable]="false"
+  [pageable]="false"
+  [sortable]="false"
+  (cellClick)="cellClickHandler($event)"
+  [rowClass]="rowCallback"
+>
+  <kendo-grid-column
+    field="lineOfBusiness"
+    title="Quote Summary"
+    width="250"
+    [locked]="true"
+  >
+  </kendo-grid-column>
 
-	<kendo-grid-column field="lineOfBusiness" title="Quote Summary" width="250" [locked]="true">
+  <kendo-grid-column
+    field="scaling"
+    title="Scaling"
+    width="100"
+    [locked]="false"
+  >
+  </kendo-grid-column>
 
-	</kendo-grid-column>
+  <!-- need to have at least one locked column -->
+  <kendo-grid-column
+    field="expiringPremium"
+    title="Expiring"
+    width="150"
+    [locked]="false"
+  >
+    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+      {{dataItem.expiringPremium | currency}}
+    </ng-template>
 
-  <kendo-grid-column field="scaling" title="Scaling" width="100" [locked]="false">
-    
-	</kendo-grid-column>
+    <ng-template kendoGridFooterTemplate>
+      {{sumExpiringPremium | currency}}
+    </ng-template>
+  </kendo-grid-column>
 
-	<!-- need to have at least one locked column -->
-	<kendo-grid-column field="expiringPremium" title="Expiring" width="150" [locked]="false">
-		<ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-			{{dataItem.expiringPremium | currency}}
-		</ng-template>
+  <ng-container *ngFor="let strat of strategies">
+    <kendo-grid-column-group
+      [locked]="false"
+      *ngIf="!isHidden(strat.columnName)"
+    >
+      <ng-template
+        kendoGridHeaderTemplate
+        let-column
+        let-columnIndex="columnIndex"
+      >
+        <mat-toolbar
+          fxLayout="column"
+          fxLayoutAlign="space-between center"
+          fxLayoutWrap
+          style="font-size: 14px;"
+        >
+          <!-- <mat-toolbar-row fxFlex="100">
+                {{strat.title}}
+              </mat-toolbar-row> -->
+          <mat-toolbar-row fxLayout="row">
+            <mat-form-field fxFlex="95">
+              <textarea
+                matInput
+                [(ngModel)]="strat.title"
+                #autosize="cdkTextareaAutosize"
+                placeholder="Enter strategy name"
+                class="full-width"
+                cdkTextareaAutosize
+                cdkAutosizeMinRows="2"
+                cdkAutosizeMaxRows="8"
+              >
+              </textarea>
+            </mat-form-field>
 
-		<ng-template kendoGridFooterTemplate>
-			{{sumExpiringPremium | currency}}
-		</ng-template>
-	</kendo-grid-column>
-
-	<ng-container *ngFor="let strat of strategies">
-
-			<kendo-grid-column-group [title]="strat.title" [locked]="false" *ngIf="!isHidden(strat.columnName)">
-
-				<ng-template kendoGridHeaderTemplate let-column let-columnIndex="columnIndex">
-					<mat-toolbar style="height: 100px;">
-						<mat-form-field class="full-width">
-							<textarea matInput
-                        [(ngModel)]='strat.title'
-                        #autosize="cdkTextareaAutosize"
-                        placeholder="Enter strategy name"
-                        class="full-width"
-                        cdkTextareaAutosize
-                        cdkAutosizeMinRows="3"
-                        cdkAutosizeMaxRows="5">
-							</textarea>
-						</mat-form-field>
-
-						<span class="example-spacer"></span>
-
-						<button mat-icon-button matTooltip="Copy Strategy" (click)="copyStrategy(strat)">
+            <div fxLayout="column" fxFlex="5">
+              <button
+                fxFlex
+                mat-icon-button
+                matTooltip="Copy Strategy"
+                (click)="copyStrategy(strat)"
+              >
                 <mat-icon>content_copy</mat-icon>
               </button>
-						<button mat-icon-button class="example-icon" matTooltip="Delete Strategy" (click)="deleteStrategy(strat)">
-                <mat-icon>delete</mat-icon>                
+              <button
+                fxFlex
+                mat-icon-button
+                class="example-icon"
+                matTooltip="Delete Strategy"
+                (click)="deleteStrategy(strat)"
+              >
+                <mat-icon>delete</mat-icon>
               </button>
-					</mat-toolbar>
+            </div>
+          </mat-toolbar-row>
 
+          <mat-toolbar-row fxFlex="100">
+            <span
+              *ngFor="let carrier of strat.quotedCarriers; let i = index; last as isLast"
+              >{{carrier}}<span *ngIf="!isLast">, </span></span
+            >
+          </mat-toolbar-row>
 
-				</ng-template>
+          <mat-toolbar-row fxLayout="column">
+            <div fxFlex fxLayout="row" fxLayoutAlign="end center"
+              *ngFor="let line of strat.quotedLines; let i = index; last as isLast"
+            >
+              {{line}}
+            </div>
+          </mat-toolbar-row>
+        </mat-toolbar>
+      </ng-template>
 
-				<kendo-grid-column title="Quote" [locked]="false" width="150">
+      <kendo-grid-column title="Quote" [locked]="false" width="150">
+        <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+          <div class="placeholder">
+            {{ (dataItem?.selectedPremium && dataItem.selectedPremium !== 0) ?
+            (dataItem.selectedPremium | currency) : '-' }}
+          </div>
+        </ng-template>
+        <ng-template
+          kendoGridEditTemplate
+          let-dataItem="dataItem"
+          let-column="column"
+          let-formGroup="formGroup"
+        >
+          <mat-select
+            [(value)]="dataItem.selectedPremium"
+            placeholder="Select quote"
+            (selectionChange)="onQuoteChange($event, strat, dataItem)"
+          >
+            <mat-option [value]="0">-- Select Quote --</mat-option>
+            <mat-option
+              *ngFor="let quote of dataItem.quotes"
+              [value]="quote.grossPremium"
+              >{{quote.marketName}}... (quote summary info here)</mat-option
+            >
+          </mat-select>
+        </ng-template>
 
-					<ng-template kendoGridCellTemplate let-dataItem="dataItem">
-						<div class="placeholder">
-							{{ (dataItem?.selectedPremium && dataItem.selectedPremium !== 0) ? (dataItem.selectedPremium | currency) : '-' }}
-						</div>
-					</ng-template>
-					<ng-template kendoGridEditTemplate let-dataItem="dataItem" let-column="column"
-						let-formGroup="formGroup">
+        <ng-template kendoGridFooterTemplate>
+          {{sumSelectedPremium | currency}}
+        </ng-template>
+      </kendo-grid-column>
 
-						<mat-select [(value)]="dataItem.selectedPremium" placeholder="Select quote">
-              <mat-option [value]="0">-- Select Quote --</mat-option>
-							<mat-option *ngFor="let quote of dataItem.quotes" [value]="quote.grossPremium">{{quote.marketName}}... (quote summary info here)</mat-option>
-						</mat-select>
-
-					</ng-template>
-
-					<ng-template kendoGridFooterTemplate>
-						{{sumSelectedPremium | currency}}
-					</ng-template>
-
-				</kendo-grid-column>
-
-				<kendo-grid-column title="Difference" [locked]="false" width="200">
-					<ng-template kendoGridCellTemplate let-dataItem="dataItem">
-						{{getDifference(dataItem)}}
-					</ng-template>
-				</kendo-grid-column>
-			</kendo-grid-column-group>
-	</ng-container>
-
+      <kendo-grid-column title="Difference" [locked]="false" width="200">
+        <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+          {{getDifference(dataItem)}}
+        </ng-template>
+      </kendo-grid-column>
+    </kendo-grid-column-group>
+  </ng-container>
 </kendo-grid>
