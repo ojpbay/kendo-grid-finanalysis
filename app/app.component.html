@@ -97,9 +97,6 @@
           fxLayoutWrap
           style="font-size: 14px;"
         >
-          <!-- <mat-toolbar-row fxFlex="100">
-                {{strat.title}}
-              </mat-toolbar-row> -->
           <mat-toolbar-row fxLayout="row">
             <mat-form-field fxFlex="95">
               <textarea
@@ -136,10 +133,10 @@
             </div>
           </mat-toolbar-row>
 
-          <mat-toolbar-row fxFlex="100">
-            <span
+          <mat-toolbar-row style="font-size: 16px;" fxFlex="100">
+            <span style="margin-right: 5px;"
               *ngFor="let carrier of strat.quotedCarriers; let i = index; last as isLast"
-              >{{carrier}}<span *ngIf="!isLast">, </span></span
+              >{{carrier}}<span *ngIf="!isLast">,&nbsp;</span></span
             >
           </mat-toolbar-row>
 
@@ -147,7 +144,9 @@
             <div fxFlex fxLayout="row" fxLayoutAlign="end center"
               *ngFor="let line of strat.quotedLines; let i = index; last as isLast"
             >
-              {{line}}
+              <div fxFlex="100">
+                {{line}}
+              </div>
             </div>
           </mat-toolbar-row>
         </mat-toolbar>
